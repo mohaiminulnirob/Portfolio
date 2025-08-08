@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Portfolio — Mohaiminul Islam Nirob</title>
+
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <!-- Header: profile + nav + theme toggle -->
+  <header class="site-header">
+    <div class="header-inner container">
+      <div class="brand-left">
+        <img src="profile.jpg" alt="Mohaiminul profile" class="brand-avatar">
+        <div class="brand-text">
+          <div class="brand-name">Mohaiminul Nirob</div>
+          <div class="brand-role">Software Eng. student</div>
+        </div>
+      </div>
+
+      <div class="header-right">
+        <nav class="main-nav desktop-nav" aria-label="Main navigation">
+          <a href="#" class="nav-link" data-page="about">About Me</a>
+          <a href="#" class="nav-link" data-page="life">Life Events</a>
+          <a href="#" class="nav-link" data-page="learnings">Learnings</a>
+          <a href="#" class="nav-link" data-page="projects">Projects</a>
+          <a href="#" class="nav-link" data-page="contact">Contact</a>
+        </nav>
+        <button id="menuToggle" class="icon-btn mobile-menu-btn" aria-label="Toggle menu">
+          <i class="fa fa-bars"></i>
+        </button>
+        <button id="themeToggle" class="icon-btn" aria-label="Toggle theme" title="Toggle theme">
+          <i id="themeIcon" class="fa fa-moon-o"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Slide-in Mobile Menu -->
+    <nav class="mobile-nav hidden" id="mobileNav">
+      <a href="#" class="nav-link" data-page="about">About Me</a>
+      <a href="#" class="nav-link" data-page="life">Life Events</a>
+      <a href="#" class="nav-link" data-page="learnings">Learnings</a>
+      <a href="#" class="nav-link" data-page="projects">Projects</a>
+      <a href="#" class="nav-link" data-page="contact">Contact</a>
+    </nav>
+  </header>
+
+  <!-- Main layout -->
+  <main class="main container">
+    <aside class="intro-column" aria-labelledby="introHeading">
+      <div class="intro-box">
+        <h1 id="introHeading">Hello, I'm <strong>Mohaiminul Islam Nirob</strong>.</h1>
+        <img src="profile.jpg" alt="Mohaiminul" class="profile-inline">
+        <p class="intro-sub">Undergraduate Software Engineering student at Shahjalal University of Science &amp; Technology, Sylhet.</p>
+
+        <div class="intro-actions">
+          <button id="contactBtn" class="btn primary">Contact Me</button>
+          <button id="downloadBtn" class="btn ghost">Download CV</button>
+        </div>
+      </div>
+    </aside>
+
+    <section class="page-column" id="pageColumn" aria-live="polite">
+      <!-- Page content dynamically added here -->
+    </section>
+  </main>
+
+  <footer class="site-footer container">
+    <small>© 2025 Mohaiminul Nirob — Portfolio</small>
+  </footer>
+</body>
+</html>
