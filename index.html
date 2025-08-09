@@ -10,18 +10,21 @@
   <script defer src="script.js"></script>
 </head>
 <body>
-  <!-- Header: profile + nav + theme toggle -->
+  <!-- Header -->
   <header class="site-header">
     <div class="header-inner container">
-      <div class="brand-left">
-        <img src="profile.jpg" alt="Mohaiminul profile" class="brand-avatar">
-        <div class="brand-text">
-          <div class="brand-name">Mohaiminul Nirob</div>
-          <div class="brand-role">Software Eng. student</div>
-        </div>
-      </div>
-
       <div class="header-right">
+        <!-- Mode toggle first -->
+        <button id="themeToggle" class="icon-btn" aria-label="Toggle theme" title="Toggle theme">
+          <i id="themeIcon" class="fa fa-moon-o"></i>
+        </button>
+
+        <!-- Hamburger menu for mobile -->
+        <button id="menuToggle" class="icon-btn mobile-menu-btn" aria-label="Toggle menu">
+          <i class="fa fa-bars"></i>
+        </button>
+
+        <!-- Desktop navigation -->
         <nav class="main-nav desktop-nav" aria-label="Main navigation">
           <a href="#" class="nav-link" data-page="about">About Me</a>
           <a href="#" class="nav-link" data-page="life">Life Events</a>
@@ -29,12 +32,6 @@
           <a href="#" class="nav-link" data-page="projects">Projects</a>
           <a href="#" class="nav-link" data-page="contact">Contact</a>
         </nav>
-        <button id="menuToggle" class="icon-btn mobile-menu-btn" aria-label="Toggle menu">
-          <i class="fa fa-bars"></i>
-        </button>
-        <button id="themeToggle" class="icon-btn" aria-label="Toggle theme" title="Toggle theme">
-          <i id="themeIcon" class="fa fa-moon-o"></i>
-        </button>
       </div>
     </div>
 
@@ -52,8 +49,13 @@
   <main class="main container">
     <aside class="intro-column" aria-labelledby="introHeading">
       <div class="intro-box">
-        <h1 id="introHeading">Hello, I'm <strong>Mohaiminul Islam Nirob</strong>.</h1>
-        <img src="profile.jpg" alt="Mohaiminul" class="profile-inline">
+        <!-- Title + picture in a single row -->
+        <div class="intro-top">
+          <h1 id="introHeading">Hello, I'm <strong>Mohaiminul Islam Nirob</strong></h1>
+          <img src="files/profile.jpg" alt="Mohaiminul" class="profile-inline">
+        </div>
+
+        <!-- Paragraph and buttons below -->
         <p class="intro-sub">Undergraduate Software Engineering student at Shahjalal University of Science &amp; Technology, Sylhet.</p>
 
         <div class="intro-actions">
@@ -64,12 +66,12 @@
     </aside>
 
     <section class="page-column" id="pageColumn" aria-live="polite">
-      <!-- Page content dynamically added here -->
+      <!-- Page content will be added by script.js -->
     </section>
   </main>
 
   <footer class="site-footer container">
-    <small>© 2025 Mohaiminul Nirob — Portfolio</small>
+    <small>©Mohaiminul Nirob — Portfolio</small>
   </footer>
 </body>
 </html>
