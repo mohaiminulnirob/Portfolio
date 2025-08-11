@@ -233,9 +233,66 @@ nextArrow.style.alignSelf = 'flex-end';
 
 compWrapper.appendChild(nextArrow);
 
-  } else if (pageId === 'contact') {
-    pageColumn.innerHTML = `<h2>Contact Me</h2><p>Email, phone, social links...</p>`;
-  }
+ } else if (pageId === 'contact') {
+    const contactWrapper = document.createElement('div');
+    contactWrapper.className = 'contact-page';
+
+    contactWrapper.innerHTML = `
+        <div class="contact-container">
+            <!-- Contact Info Section -->
+            <div class="contact-info">
+                <h3 class="title">Contact Info</h3>
+                <ul>
+                    <li><i class="fa fa-phone icon"></i><span class="text">01709901364</span></li>
+                    <li><i class="fa fa-envelope icon"></i><span class="text">mohaiminulislam20000@gmail.com</span></li>
+                    <li><i class="fa fa-facebook icon"></i><span class="text">facebook.com/mohaiminul.islam.5891</span></li>
+                    <li><i class="fa fa-github icon"></i><span class="text">github.com/mohaiminulnirob</span></li>
+                    <li><i class="fa fa-map-marker icon"></i><span class="text">Mollarhat, Kalkini, Madaripur, Dhaka</span></li>
+                </ul>
+                
+                <!-- Social Media Links -->
+                <div class="social-links">
+                    <a href="https://www.facebook.com/mohaiminul.islam.5891" target="_blank" class="social-icon"><i class="fa fa-facebook"></i></a>
+                    <a href="https://github.com/mohaiminulnirob" target="_blank" class="social-icon"><i class="fa fa-github"></i></a>
+                    <a href="mailto:mohaiminulislam20000@gmail.com" class="social-icon"><i class="fa fa-envelope"></i></a>
+                    <a href="tel:+8801709901364" class="social-icon"><i class="fa fa-phone"></i></a>
+                </div>
+            </div>
+            
+            <!-- Contact Form Section -->
+            <div class="contact-form">
+                <h3 class="title">Send Me a Message</h3>
+                <form id="contactForm">
+                    <div class="form-group">
+                        <input type="text" id="name" name="name" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="email" name="email" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="subject" name="subject" placeholder="Subject">
+                    </div>
+                    <div class="form-group">
+                        <textarea id="message" name="message" rows="5" placeholder="Your Message" required></textarea>
+                    </div>
+                    <button type="submit" class="btn primary">Send Message</button>
+                </form>
+            </div>
+        </div>
+        
+
+    `;
+
+    // Add form submission handler
+    contactWrapper.querySelector('#contactForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        // Here you would normally send the form data to a server
+        alert('Thank you for your message! I will get back to you soon.');
+        this.reset();
+    });
+
+    pageColumn.appendChild(contactWrapper);
+}
 }
 
 // Navigation handling
