@@ -10,6 +10,24 @@ const menuToggle = document.getElementById('menuToggle');
 
 let currentPage = 'about';
 
+// Reusable function to create the arrow button
+function createNextArrow(targetPageId) {
+  const arrow = document.createElement('div');
+  arrow.className = 'next-arrow';
+  arrow.innerHTML = `<i class="fa fa-arrow-right"></i>`;
+  arrow.style.marginTop = '10px';
+  arrow.style.alignSelf = 'flex-end';
+
+  arrow.addEventListener('click', () => {
+    const targetLink = document.querySelector(`.nav-link[data-page="${targetPageId}"]`);
+    if (targetLink) {
+      targetLink.click();
+    }
+  });
+
+  return arrow;
+}
+
 function renderPage(pageId) {
   currentPage = pageId;
   pageColumn.innerHTML = ''; // Clear previous
@@ -47,28 +65,176 @@ function renderPage(pageId) {
       </p>
     `;
 
-    // Arrow to Life Events
-    const arrowLink = document.createElement('div');
-    arrowLink.className = 'next-arrow';
-    arrowLink.innerHTML = `<i class="fa fa-arrow-right"></i>`;
-    arrowLink.addEventListener('click', () => {
-      document.querySelector('.nav-link[data-page="life"]').click();
-    });
-
     aboutWrapper.appendChild(introSection);
     aboutWrapper.appendChild(passionSection);
-    aboutWrapper.appendChild(arrowLink);
+
+    // Add next arrow button leading to 'life' page
+    const arrow = createNextArrow('life');
+    aboutWrapper.appendChild(arrow);
 
     pageColumn.appendChild(aboutWrapper);
 
   } else if (pageId === 'life') {
-    pageColumn.innerHTML = `<h2>Life Events</h2><p>Milestones in my life journey...</p>`;
+    const lifeWrapper = document.createElement('div');
+    lifeWrapper.className = 'learning-path-page';
+
+    lifeWrapper.innerHTML = `
+      <section class="learning-education">
+        <h2 class="section-title"><i class="fa fa-graduation-cap"></i> Education Timeline</h2>
+        <ul class="timeline">
+          <li>
+            <span class="timeline-year">2023 - Present</span>
+            <div class="timeline-content">
+              <h4>B.Sc in Software Engineering</h4>
+              <p>Shahjalal University of Science & Technology, Sylhet</p>
+            </div>
+          </li>
+          <li>
+            <span class="timeline-year">2018 - 2020</span>
+            <div class="timeline-content">
+              <h4>College</h4>
+              <p>Birshreshtha Noor Mohammad Public College, Dhaka</p>
+            </div>
+          </li>
+          <li>
+            <span class="timeline-year">2013 - 2018</span>
+            <div class="timeline-content">
+              <h4>High School</h4>
+              <p>Mollarhat High School, Kalkini, Madaripur</p>
+            </div>
+          </li>
+        </ul>
+      </section>
+
+      <section class="learning-academic">
+        <h2 class="section-title"><i class="fa fa-book"></i> Academic Learning in CS Subjects</h2>
+        <p>
+          Strong academic foundation in core CS topics:
+        </p>
+        <ul class="sublist enhanced-list">
+          <li><i class="fa fa-check-circle"></i> Data Structures</li>
+          <li><i class="fa fa-check-circle"></i> Object-Oriented Programming (OOP)</li>
+          <li><i class="fa fa-check-circle"></i> Software Requirements Engineering (SRE)</li>
+          <li><i class="fa fa-check-circle"></i> Operating Systems</li>
+        </ul>
+        <p>
+          Completed lab work and maintain practice repos on GitHub:
+          <a href="https://github.com/mohaiminulnirob/OOP_PREPARATIONS" target="_blank" class="custom-link">OOP</a>,
+          <a href="https://github.com/mohaiminulnirob/DATA_STRUCTURE_LAB" target="_blank" class="custom-link">Data Structures</a>,
+          <a href="https://github.com/mohaiminulnirob/os-lab-tasks" target="_blank" class="custom-link">Operating Systems</a>,
+          <a href="https://github.com/mohaiminulnirob/numerical-lab" target="_blank" class="custom-link">Numerical Analysis</a>.
+        </p>
+      </section>
+
+      <section class="learning-extracurricular">
+        <h2 class="section-title"><i class="fa fa-star"></i> Learnings from Extracurricular Activities</h2>
+        <ul class="enhanced-list">
+          <li><i class="fa fa-futbol-o"></i> Active in sports like football, cricket, badminton; part of departmental football team in tournaments.</li>
+          <li><i class="fa fa-users"></i> Organizing Secretary of <strong>SWE Society, SUST</strong>, managing events and student coordination.</li>
+          <li><i class="fa fa-music"></i> Passionate about cultural programs, especially poem recitation, awarded multiple times.</li>
+        </ul>
+      </section>
+    `;
+
+    pageColumn.appendChild(lifeWrapper);
+
+    // Add next arrow button leading to 'learnings' page
+    const arrow = createNextArrow('learnings');
+    lifeWrapper.appendChild(arrow);
+
   } else if (pageId === 'learnings') {
-    pageColumn.innerHTML = `<h2>Learnings</h2><p>Technologies, soft skills, and lessons learned...</p>`;
-  } else if (pageId === 'projects') {
-    pageColumn.innerHTML = `<h2>Projects</h2><p>Featured projects and side work...</p>`;
+   const compWrapper = document.createElement('div');
+  compWrapper.className = 'competencies-page';
+
+  compWrapper.innerHTML = `
+    <section class="comp-section">
+      <h4 class="comp-title"><i class="fa fa-code"></i> Programming Languages & Proficiency</h4>
+      <ul class="prog-lang-list">
+        <li>
+          <span>C & C++</span>
+          <div class="prog-bar"><div style="width: 90%;"></div></div>
+        </li>
+        <li>
+          <span>Java</span>
+          <div class="prog-bar"><div style="width: 70%;"></div></div>
+        </li>
+        <li>
+          <span>Dart & Flutter</span>
+          <div class="prog-bar"><div style="width: 50%;"></div></div>
+        </li>
+      </ul>
+    </section>
+
+    <section class="comp-section cp-section">
+      <div class="cp-info">
+        <h4 class="comp-title"><i class="fa fa-trophy"></i> Competitive Programming</h4>
+        <ul class="cp-list">
+          <li>Solved 1100+ problems across online judges.</li>
+          <li>Decent understanding of algorithms, data structures, and problem-solving strategies.</li>
+          <li>
+            GitHub repos for practice: 
+            <a href="https://github.com/mohaiminulnirob/Competitive_Programming" target="_blank" class="custom-link">Competitive_Programming</a>, 
+            <a href="https://github.com/mohaiminulnirob/SWE-222_CP" target="_blank" class="custom-link">SWE-222_CP</a>, 
+            <a href="https://github.com/mohaiminulnirob/SWE-230_Algorithm" target="_blank" class="custom-link">SWE-230_Algorithm</a>
+          </li>
+        </ul>
+      </div>
+      <div class="cp-img-wrapper">
+        <p class="cp-profile">
+                    <i class="fa fa-line-chart icon"></i> A consolidated profile of my CP activity on 
+                    <a href="https://www.stopstalk.com/user/profile/mohaiminul2002" target="_blank" class="custom-link">StopStalk</a>.
+                </p>
+      </div>
+    </section>
+
+    <section class="comp-section projects-section">
+      <h4 class="comp-title"><i class="fa fa-folder-open"></i> Projects</h4>
+      <div class="projects-grid">
+        <div class="project-card" style="background-image: url('project_thumbnails/snake_game.png');">
+          <div class="proj-info">
+            <h5>Snake Game</h5>
+            <p>Classic snake game developed in C using SDL2.</p>
+            <a href="https://github.com/mohaiminulnirob/SWE_150_Snake_Game" target="_blank" class="custom-link">GitHub Repo</a>
+          </div>
+        </div>
+        <div class="project-card" style="background-image: url('project_thumbnails/astro_adventure.png');">
+          <div class="proj-info">
+            <h5>Astro Adventure Game</h5>
+            <p>2D space adventure game using LIBGDX.</p>
+            <a href="https://github.com/mohaiminulnirob/SWE224_GAME" target="_blank" class="custom-link">GitHub Repo</a>
+          </div>
+        </div>
+        <div class="project-card" style="background-image: url('project_thumbnails/sust_spot_booking.png');">
+          <div class="proj-info">
+            <h5>SUST Spot Booking App</h5>
+            <p>Flutter & Firebase app for spot booking.</p>
+            <a href="https://github.com/mohaiminulnirob/SWE-250_Android_App" target="_blank" class="custom-link">GitHub Repo</a>
+          </div>
+        </div>
+        <div class="project-card" style="background-image: url('project_thumbnails/calculator_app.png');">
+          <div class="proj-info">
+            <h5>Calculator Application</h5>
+            <p>Basic calculator with Java Swing GUI.</p>
+            <a href="https://github.com/mohaiminulnirob/CalculatorApp_SWE224" target="_blank" class="custom-link">GitHub Repo</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  `;
+
+  // After appending compWrapper to pageColumn
+pageColumn.appendChild(compWrapper);
+
+// Add bottom arrow leading to 'contact' page
+const nextArrow = createNextArrow('contact');
+nextArrow.style.marginTop = '20px';
+nextArrow.style.alignSelf = 'flex-end';
+
+
+compWrapper.appendChild(nextArrow);
+
   } else if (pageId === 'contact') {
-    pageColumn.innerHTML = `<h2>Contact</h2><p>Email, phone, social links...</p>`;
+    pageColumn.innerHTML = `<h2>Contact Me</h2><p>Email, phone, social links...</p>`;
   }
 }
 
