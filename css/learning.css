@@ -1,0 +1,130 @@
+/* ===== Learning Path Styles ===== */
+.learning-path-page {
+  display: flex;
+  flex-direction: column;
+}
+
+.section-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 6px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border-bottom: none;
+  padding-bottom: 4px;
+  position: relative;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 40px;
+  height: 2.5px;
+  background: var(--purpleaccent);
+  border-radius: 2px;
+}
+
+.timeline {
+  list-style: none;
+  position: relative;
+  margin-left: 14px;
+  padding-left: 0;
+  border-left: 2px solid var(--purpleaccent);
+}
+
+.timeline li {
+  position: relative;
+  margin-bottom: 12px;
+  padding-left: 18px;
+}
+
+.timeline li::before {
+  content: '';
+  position: absolute;
+  left: -9px;
+  top: 5px;
+  width: 12px;
+  height: 12px;
+  background: var(--purpleaccent);
+  border-radius: 50%;
+}
+
+.timeline-year {
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 3px;
+  display: block;
+  font-size: 12px;
+}
+
+.timeline-content h4 {
+  margin-bottom: 2px;
+  color: var(--text);
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.timeline-content p {
+  color: var(--muted);
+  font-size: 12.5px;
+  margin: 0;
+  line-height: 1.3;
+}
+
+.enhanced-list {
+  list-style: none;
+  padding-left: 0;
+  color: var(--text);
+  font-size: 13px;
+  line-height: 1.3;
+}
+
+.enhanced-list li {
+  position: relative;
+  padding-left: 22px;
+  margin-bottom: 6px;
+  cursor: default;
+}
+
+.enhanced-list li i {
+  color: var(--text);
+  position: absolute;
+  left: 0;
+  top: 1px;
+  font-size: 13px;
+}
+
+.custom-link {
+  color: var(--softskyblue);
+  text-decoration: underline;
+  font-weight: 600;
+  font-size: 12.5px;
+}
+
+.learning-path-page section {
+  background: var(--card);
+  padding: 5px 5px;
+  border-radius: 10px;
+  box-shadow: 0 12px 30px rgba(2, 6, 23, 0.05);
+  margin-bottom: 7px;
+}
+
+@media (max-width: 768px) {
+  .timeline {
+    margin-left: 0;
+    border-left: none;
+  }
+  
+  .timeline li {
+    padding-left: 0;
+    margin-bottom: 14px;
+  }
+  
+  .timeline li::before {
+    display: none;
+  }
+}

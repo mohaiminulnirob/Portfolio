@@ -4,27 +4,27 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Portfolio — Mohaiminul Islam Nirob</title>
-
-  <link rel="stylesheet" href="style.css">
+  
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/about.css">
+  <link rel="stylesheet" href="css/learning.css">
+  <link rel="stylesheet" href="css/competencies.css">
+  <link rel="stylesheet" href="css/contact.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <script defer src="script.js"></script>
 </head>
 <body>
   <!-- Header -->
   <header class="site-header">
     <div class="header-inner container">
       <div class="header-right">
-        <!-- Mode toggle first -->
-        <button id="themeToggle" class="icon-btn" aria-label="Toggle theme" title="Toggle theme">
+        <button id="themeToggle" class="icon-btn" aria-label="Toggle theme">
           <i id="themeIcon" class="fa fa-moon-o"></i>
         </button>
-
-        <!-- Hamburger menu for mobile -->
         <button id="menuToggle" class="icon-btn mobile-menu-btn" aria-label="Toggle menu">
           <i class="fa fa-bars"></i>
         </button>
-
-        <!-- Desktop navigation -->
         <nav class="main-nav desktop-nav" aria-label="Main navigation">
           <a href="#" class="nav-link" data-page="about">About Me</a>
           <a href="#" class="nav-link" data-page="life">Learning Path</a>
@@ -33,8 +33,6 @@
         </nav>
       </div>
     </div>
-
-    <!-- Slide-in Mobile Menu -->
     <nav class="mobile-nav hidden" id="mobileNav">
       <a href="#" class="nav-link" data-page="about">About Me</a>
       <a href="#" class="nav-link" data-page="life">Learning Path</a>
@@ -43,24 +41,18 @@
     </nav>
   </header>
 
-  <!-- Main layout -->
   <main class="main container">
     <aside class="intro-column" aria-labelledby="introHeading">
       <div class="intro-box">
-        <!-- Title + picture in a single row -->
         <div class="intro-top">
-         <h1 id="introHeading">
-  <span class="line">Hello, I'm</span><br>
-  <span class="line">Mohaiminul Islam</span><br>
-  <span class="line">Nirob</span>
-</h1>
-
-          <img src="files/profile.jpg" alt="Mohaiminul" class="profile-inline">
+          <h1 id="introHeading">
+            <span class="line">Hello, I'm</span><br>
+            <span class="line">Mohaiminul Islam</span><br>
+            <span class="line">Nirob</span>
+          </h1>
+          <img src="assets/profile.jpg" alt="Mohaiminul" class="profile-inline">
         </div>
-
-        <!-- Paragraph and buttons below -->
-        <p class="intro-sub">Undergraduate Software Engineering student at Shahjalal University of Science &amp; Technology, Sylhet.</p>
-
+        <p class="intro-sub">Undergraduate Software Engineering student at Shahjalal University of Science & Technology, Sylhet.</p>
         <div class="intro-actions">
           <button id="contactBtn" class="btn primary">Contact Me</button>
           <button id="downloadBtn" class="btn ghost">Download CV</button>
@@ -69,12 +61,21 @@
     </aside>
 
     <section class="page-column" id="pageColumn" aria-live="polite">
-      <!-- Page content will be added by script.js -->
+      <!-- Content loaded dynamically -->
     </section>
   </main>
 
   <footer class="site-footer container">
     <small>©Mohaiminul Nirob — Portfolio</small>
   </footer>
+
+  <!-- JavaScript -->
+  <script src="js/theme.js"></script>
+  <script src="js/navigation.js"></script>
+  <script src="js/about.js"></script>
+  <script src="js/learning.js"></script>
+  <script src="js/competencies.js"></script>
+  <script src="js/contact.js"></script>
+  <script src="js/main.js"></script>
 </body>
 </html>
