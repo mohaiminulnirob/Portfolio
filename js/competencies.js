@@ -73,7 +73,7 @@ function projectCard(project) {
       <div class="project-links">
         <a href="${project.repo}" target="_blank" rel="noopener noreferrer" aria-label="${project.title}: GitHub repository"><i class="fa fa-github" aria-hidden="true"></i> Repository <span aria-hidden="true">↗</span></a>
         ${project.demo ? '<a href="' + project.demo + '" target="_blank" rel="noopener noreferrer" aria-label="' + project.title + ': Live demo">Live Demo <span aria-hidden="true">↗</span></a>' : ''}
-        ${project.materials ? '<a href="' + project.materials + '" target="_blank" rel="noopener noreferrer">Research Materials <span aria-hidden="true">↗</span></a>' : ''}
+        ${project.materials ? '<a href="' + project.materials + '" target="_blank" rel="noopener noreferrer">Research Status <span aria-hidden="true">↗</span></a>' : ''}
       </div>
     </article>
   `;
