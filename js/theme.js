@@ -9,8 +9,8 @@ function applyTheme(theme) {
   try { localStorage.setItem('portfolioTheme', dark ? 'dark' : 'light'); } catch { /* Use the theme for this visit. */ }
 }
 
-let savedTheme = 'light';
-try { savedTheme = localStorage.getItem('portfolioTheme') || 'light'; } catch { /* Default to light. */ }
+let savedTheme = 'dark';
+try { savedTheme = localStorage.getItem('portfolioTheme') || 'dark'; } catch { /* Default to dark. */ }
 applyTheme(savedTheme);
 document.getElementById('themeToggle').addEventListener('click', () => {
   applyTheme(document.body.classList.contains('dark-mode') ? 'light' : 'dark');
