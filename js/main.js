@@ -1,69 +1,51 @@
-/* ===== Main Application ===== */
-let currentPage = 'about';
+/* Main application: existing four views, rendered into the shared page column. */
+let currentPage = null;
+const pageRenderers = {
+  about: { title: 'About Me', render: renderAboutPage },
+  life: { title: 'Learning Path', render: renderLearningPathPage },
+  learnings: { title: 'Competencies', render: renderCompetenciesPage },
+  contact: { title: 'Contact Me', render: renderContactPage }
+};
 
-// Initialize the application
-function init() {
-  applyTheme(localStorage.getItem('portfolioTheme') || 'light');
-  renderPage('about');
-  document.querySelector('.nav-link[data-page="about"]').classList.add('active');
-  setupEventListeners();
-}
-
-// Core rendering function
 function renderPage(pageId) {
-  currentPage = pageId;
-  const pageColumn = document.getElementById('pageColumn');
-  pageColumn.innerHTML = '';
-  
-  switch(pageId) {
-    case 'about':
-      renderAboutPage(pageColumn);
-      break;
-    case 'life':
-      renderLearningPathPage(pageColumn);
-      break;
-    case 'learnings':
-      renderCompetenciesPage(pageColumn);
-      break;
-    case 'contact':
-      renderContactPage(pageColumn);
-      break;
-    default:
-      renderAboutPage(pageColumn);
-  }
-}
-
-// Set up all event listeners
-function setupEventListeners() {
-  // Navigation
+  currentPage = Object.hasOwn(pageRenderers, pageId) ? pageId : 'about';
+  const page = pageRenderers[currentPage];
+  const column = document.getElementById('pageColumn');
+  column.replaceChildren();
+  page.render(column);
+  document.title = page.title + ' | Mohaiminul Islam Nirob';
   document.querySelectorAll('.nav-link').forEach(link => {
-    link.addEventListener('click', handleNavigation);
+    const active = link.dataset.page === currentPage;
+    link.classList.toggle('active', active);
+    if (active) link.setAttribute('aria-current', 'page');
+    else link.removeAttribute('aria-current');
   });
-  
-  // Contact button
-  document.getElementById('contactBtn').addEventListener('click', () => {
-    document.querySelector('.nav-link[data-page="contact"]').click();
-  });
-  
-  // Download CV button
-  document.getElementById('downloadBtn').addEventListener('click', downloadCV);
-  
-  // Mobile menu toggle
+}
+
+function init() {
+  navigateFromHash(false);
+  document.getElementById('copyrightYear').textContent = new Date().getFullYear();
+  window.addEventListener('hashchange', () => navigateFromHash());
   document.getElementById('menuToggle').addEventListener('click', () => {
-    document.getElementById('mobileNav').classList.toggle('hidden');
+    setMobileMenu(document.getElementById('menuToggle').getAttribute('aria-expanded') !== 'true');
+  });
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape' && !document.getElementById('mobileNav').classList.contains('hidden')) {
+      setMobileMenu(false);
+      document.getElementById('menuToggle').focus();
+    }
+  });
+  document.addEventListener('click', event => {
+    const link = event.target.closest('a[href^="#"]');
+    if (link && link.hash === window.location.hash) {
+      event.preventDefault();
+      navigateFromHash();
+    }
+    if (!event.target.closest('.site-header')) setMobileMenu(false);
+  });
+  window.matchMedia('(min-width: 921px)').addEventListener('change', event => {
+    if (event.matches) setMobileMenu(false);
   });
 }
 
-// Download CV function
-function downloadCV() {
-  const pdfUrl = 'assets/Mohaiminul_Nirob_CV.pdf'; 
-  const a = document.createElement('a');
-  a.href = pdfUrl;
-  a.download = 'Mohaiminul_Nirob_CV.pdf';
-  document.body.appendChild(a);
-  a.click();
-  a.remove();
-}
-
-// Initialize the app when DOM is loaded
 document.addEventListener('DOMContentLoaded', init);

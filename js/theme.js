@@ -1,17 +1,17 @@
-/* ===== Theme Handling ===== */
+/* Theme storage is optional; the portfolio also works when storage is blocked. */
 function applyTheme(theme) {
-  if (theme === 'dark') {
-    document.body.classList.add('dark-mode');
-    document.getElementById('themeIcon').className = 'fa fa-sun-o';
-  } else {
-    document.body.classList.remove('dark-mode');
-    document.getElementById('themeIcon').className = 'fa fa-moon-o';
-  }
-  localStorage.setItem('portfolioTheme', theme);
+  const dark = theme === 'dark';
+  document.body.classList.toggle('dark-mode', dark);
+  document.getElementById('themeIcon').className = dark ? 'fa fa-sun-o' : 'fa fa-moon-o';
+  const toggle = document.getElementById('themeToggle');
+  toggle.setAttribute('aria-label', dark ? 'Switch to light theme' : 'Switch to dark theme');
+  toggle.setAttribute('aria-pressed', String(dark));
+  try { localStorage.setItem('portfolioTheme', dark ? 'dark' : 'light'); } catch { /* Use the theme for this visit. */ }
 }
 
-// Theme toggle event listener
+let savedTheme = 'light';
+try { savedTheme = localStorage.getItem('portfolioTheme') || 'light'; } catch { /* Default to light. */ }
+applyTheme(savedTheme);
 document.getElementById('themeToggle').addEventListener('click', () => {
-  const current = localStorage.getItem('portfolioTheme') || 'light';
-  applyTheme(current === 'light' ? 'dark' : 'light');
+  applyTheme(document.body.classList.contains('dark-mode') ? 'light' : 'dark');
 });
