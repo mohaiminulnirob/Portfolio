@@ -13,7 +13,7 @@ A personal portfolio showcasing my software projects, applied AI research, educa
 
 ## Built With
 
-HTML5, CSS3, vanilla JavaScript, and Font Awesome. No framework or build step required.
+HTML5,  CSS3, vanilla JavaScript, and Font Awesome. No framework or build step required.
 
 ## Run Locally
 
